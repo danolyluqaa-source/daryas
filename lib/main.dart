@@ -325,7 +325,7 @@ ${memory.isEmpty ? 'هیچ زانیارییەکی تایبەت تۆمار نەک
           : history).map((m) => {
         'role': m.role == 'user' ? 'user' : 'assistant',
         'content': m.text,
-      }),
+      })),
     ];
     final response = await http.post(uri,
       headers: {
