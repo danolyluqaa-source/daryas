@@ -532,7 +532,7 @@ class _QaraHomePageState extends State<QaraHomePage> {
     }
     setState(() => listening = true);
     await speech.listen(
-      options: SpeechListenOptions(
+      listenOptions: stt.SpeechListenOptions(
         localeId: 'ar_IQ',
         listenFor: const Duration(seconds: 45),
         pauseFor: const Duration(seconds: 3),
