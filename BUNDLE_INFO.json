@@ -1,0 +1,23 @@
+{
+  "project": "Qara Android Flutter project",
+  "version": "2.0.0",
+  "files": [
+    ".github/workflows/build_apk.yml",
+    "README_QARA.md",
+    "android/app/build.gradle",
+    "android/app/src/main/AndroidManifest.xml",
+    "android/app/src/main/kotlin/com/daryas/ai/MainActivity.kt",
+    "android/app/src/main/kotlin/com/daryas/ai/QaraWakeService.kt",
+    "android/build.gradle",
+    "android/gradle.properties",
+    "android/gradle/wrapper/gradle-wrapper.properties",
+    "android/settings.gradle",
+    "lib/main.dart",
+    "pubspec.yaml"
+  ],
+  "notes": [
+    "Qara AI 2.0 source bundle; APK has not yet been built in this environment.",
+    "GitHub Actions builds and uploads the release APK as an artifact.",
+    "Background wake-word recognition is opt-in and subject to Android device limitations."
+  ]
+}
