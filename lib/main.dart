@@ -57,7 +57,7 @@ class QaraApp extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(color: Colors.white.withOpacity(.06)),
+            borderSide: BorderSide(color: Colors.white.withValues(alpha: .06)),
           ),
         ),
       ),
@@ -532,9 +532,11 @@ class _QaraHomePageState extends State<QaraHomePage> {
     }
     setState(() => listening = true);
     await speech.listen(
-      localeId: 'ar_IQ',
-      listenFor: const Duration(seconds: 45),
-      pauseFor: const Duration(seconds: 3),
+      options: SpeechListenOptions(
+        localeId: 'ar_IQ',
+        listenFor: const Duration(seconds: 45),
+        pauseFor: const Duration(seconds: 3),
+      ),
       onResult: (result) {
         if (result.finalResult && result.recognizedWords.trim().isNotEmpty) {
           final words = result.recognizedWords.trim();
@@ -674,7 +676,7 @@ class _QaraHomePageState extends State<QaraHomePage> {
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const Text('قەرە', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20)),
             Text('${active.name} • ${active.model}',
-              style: TextStyle(fontSize: 10, color: Colors.white.withOpacity(.55))),
+              style: TextStyle(fontSize: 10, color: Colors.white.withValues(alpha: .55))),
           ]),
         ]),
         actions: [
@@ -710,9 +712,9 @@ class _QaraHomePageState extends State<QaraHomePage> {
             margin: const EdgeInsets.fromLTRB(14, 0, 14, 8),
             padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 9),
             decoration: BoxDecoration(
-              color: qaraMint.withOpacity(.09),
+              color: qaraMint.withValues(alpha: .09),
               borderRadius: BorderRadius.circular(13),
-              border: Border.all(color: qaraMint.withOpacity(.25)),
+              border: Border.all(color: qaraMint.withValues(alpha: .25)),
             ),
             child: const Row(children: [
               Icon(Icons.hearing, color: qaraMint, size: 18),
@@ -745,7 +747,7 @@ class _QaraHomePageState extends State<QaraHomePage> {
             padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
             decoration: BoxDecoration(
               color: qaraPanel,
-              border: Border(top: BorderSide(color: Colors.white.withOpacity(.06))),
+              border: Border(top: BorderSide(color: Colors.white.withValues(alpha: .06))),
             ),
             child: Row(children: [
               _RoundAction(
@@ -785,7 +787,7 @@ class _RoundAction extends StatelessWidget {
   const _RoundAction({required this.icon, required this.color, required this.onTap});
   @override
   Widget build(BuildContext context) => Material(
-    color: color.withOpacity(.13),
+    color: color.withValues(alpha: .13),
     shape: const CircleBorder(),
     child: InkWell(
       customBorder: const CircleBorder(),
@@ -817,7 +819,7 @@ class _MessageBubble extends StatelessWidget {
             bottomLeft: Radius.circular(user ? 18 : 5),
             bottomRight: Radius.circular(user ? 5 : 18),
           ),
-          border: Border.all(color: Colors.white.withOpacity(.045)),
+          border: Border.all(color: Colors.white.withValues(alpha: .045)),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           if (!user)
@@ -849,7 +851,7 @@ class _MessageBubble extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             child: Text(
               '${message.createdAt.hour.toString().padLeft(2, '0')}:${message.createdAt.minute.toString().padLeft(2, '0')}',
-              style: TextStyle(fontSize: 9, color: Colors.white.withOpacity(.35)),
+              style: TextStyle(fontSize: 9, color: Colors.white.withValues(alpha: .35)),
             ),
           ),
         ]),
@@ -923,7 +925,7 @@ class _QaraSettingsPageState extends State<QaraSettingsPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             DropdownButtonFormField<ProviderKind>(
-              value: provider.kind,
+              initialValue: provider.kind,
               decoration: const InputDecoration(labelText: 'جۆری API'),
               items: const [
                 DropdownMenuItem(value: ProviderKind.gemini, child: Text('Google Gemini')),
